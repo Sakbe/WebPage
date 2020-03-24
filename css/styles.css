@@ -20,13 +20,17 @@ body {
     font-family: balloons;
 }
 
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,1.0);
+}
+
 .background {
     position: absolute;
     background-image: url(/img/tokamak.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    filter: contrast(66%) brightness(66%);
+    filter: contrast(66%) brightness(60%);
     width: 100%;
     height: calc(100vh - 250px);
     min-height: 400px;
@@ -38,7 +42,7 @@ body {
     height: calc(100vh - 250px);
     min-height: 400px;
     color: #fff;
-  }
+}
 
 .fa {
     padding: 20px;
@@ -47,9 +51,9 @@ body {
     text-align: center;
     text-decoration: none;
     margin: 5px 2px;
-  }
-  
-  .fa:hover {
-      opacity: 0.7;
-      text-decoration: none;
-  }
+}
+
+.fa:hover {
+    opacity: 0.7;
+    text-decoration: none;
+}
