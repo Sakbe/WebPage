@@ -75,3 +75,30 @@ body {
     opacity: 0.7;
     text-decoration: none;
 }
+
+.fa-circle {
+    padding: 2px;
+    font-size: 11px;
+    width: 13px;
+    text-align: center;
+    text-decoration: none;
+    margin: 1px 2px;
+}
+
+.fa-icon {
+    padding: 5px;
+    font-size: 20px;
+    width: 20px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+}
+
+.fa-list {
+    padding: 12px;
+    font-size: 20px;
+    width: 22px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+}
