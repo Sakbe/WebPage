@@ -37,6 +37,16 @@ body {
     z-index: -1;
 }
 
+.isttok {    
+    background-image: url(../img/isttok/IMG_4136.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: calc(100vh - 150px);
+    min-height: 600px;    
+}
+
 .section-container {
     min-height: calc(100vh - 40px);
 }
