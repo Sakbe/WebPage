@@ -20,12 +20,8 @@ body {
     font-family: balloons;
 }
 
-.line {
-    font-size: 4vh;
-}
-
 .navbar-dark .navbar-nav .nav-link {
-    color: rgba(255,255,255,1.0);
+    color: rgba(255, 255, 255, 1);
 }
 
 .background {
@@ -39,6 +35,14 @@ body {
     height: calc(100vh - 250px);
     min-height: 400px;
     z-index: -1;
+}
+
+.section-container {
+    min-height: calc(100vh - 40px);
+}
+
+.line {
+    font-size: 4vh;
 }
 
 .masthead {
