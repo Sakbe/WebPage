@@ -20,6 +20,10 @@ body {
     font-family: balloons;
 }
 
+.line {
+    font-size: 4vh;
+}
+
 .navbar-dark .navbar-nav .nav-link {
     color: rgba(255,255,255,1.0);
 }
