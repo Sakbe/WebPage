@@ -48,7 +48,7 @@ body {
 }
 
 .section-container {
-    min-height: calc(100vh - 40px);
+    min-height: calc(100vh - 150px);
 }
 
 .line {
