@@ -54,8 +54,21 @@ body {
     min-height: 600px;    
 }
 
+.card {
+    border-radius: 1rem;
+}
+
 .card-img {
     filter: contrast(70%) brightness(70%) saturate(80%);
+}
+
+.card-img, .card-img-bottom {
+    border-bottom-right-radius: calc(1rem - 1px);
+    border-bottom-left-radius: calc(1rem - 1px);
+}
+.card-img, .card-img-top {
+    border-top-left-radius: calc(1rem - 1px);
+    border-top-right-radius: calc(1rem - 1px);
 }
 
 .section-container {
