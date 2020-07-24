@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block content %}
+<main role="main">
+    <section class="jumbotron text-center mb-0">
+        <div class="container">
+            <!-- <img class="avatar img-fluid" src="{% static 'img/james.png' %}" width="128" , height="128"> -->
+            <div class="canvas-container"></div>
+            <h1>Hello, I'm Jaime</h1>
+            <p class="lead text-muted">
+                AR/VR/Game Developer - Programmer
+            </p>
+            <p>
+                <a href="mailto:aestial@me.com" class="btn btn-primary mt-2">Contact me!</a>
+                <!-- <a href="#" class="btn btn-secondary my-2">Secondary action</a> -->
+            </p>                
+        </div>
+    </section>
+    <section>
+        <div class="album py-2 bg-light">
+            <div class="container-fluid">
+                <div class="row">
+                    {% for job in jobs.all %}
+                    <div class="col-sm-6 col-lg-4 px-1">                        
+                        <div class="card mb-2 shadow-sm cover">    
+                            {% thumbnail job.cover.image "480x360" crop="center" as im %}
+                            <img class="card-img cover-img" src="{{ im.url }}" >
+                            {% endthumbnail %}                            
+                            <div class="card-img-overlay cover-info d-flex bg-primary">
+                                <div class="container p-4 align-self-center">
+                                    <div class="col-12">
+                                        <h4 class="card-text text-white">
+                                            {{ job.title }}
+                                        </h4>                                        
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="text-white">
+                                            {{ job.summary }}
+                                        </p>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="small text-white">
+                                            {{ job.tags }}
+                                        </p>
+                                    </div>
+                                    <div class="col-12 align-self-bottom text-right">
+                                        <a  
+                                            href="{% url 'detail' job.id %}"
+                                            class="fa fa-cover fa-plus-circle text-white"
+                                        ></a>
+                                        <!-- <a                                              
+                                            class="cover-close fa fa-cover fa-times-circle text-white d-sm-none"
+                                        ></a> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js" integrity="sha256-gSh8eotzb/CVvCREGPUNgIWuDnTYnZvVOQnRrP1eDjI=" crossorigin="anonymous"></script> -->
+<!-- <script src="{% static 'js/three.min.js' %}"></script>
+<script src="{% static 'js/RequestAnimationFrame.js' %}"></script>
+<script src="{% static 'js/snap.svg-min.js' %}"></script>
+<script src="{% static 'js/OrbitControls.js' %}"></script>
+<script src="{% static 'js/lsp.js' %}"></script> -->
+
+{% endblock %}
