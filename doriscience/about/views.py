@@ -4,7 +4,7 @@ from django.template.loader import render_to_string
 from weasyprint import HTML
 import tempfile
 
-from .models import WorkExperience, Education, Award, Skill, Language
+from .models import WorkExperience, Education, Award, Language, Skill, Hobby
 
 # Create your views here.
 def home(request):
@@ -13,12 +13,19 @@ def home(request):
         
     })
 
+def hobbies(request):
+    hobbies = Hobby.objects.order_by('order')
+    return render(request, 'about/hobbies.html', 
+    {
+        'hobbies': hobbies
+    })
+
 def cv(request):
     workexp = WorkExperience.objects.order_by('-start_date')
     eduexp = Education.objects.order_by('-start_date')
-    awards = Award.objects.all
-    skills = Skill.objects.all
-    languages = Language.objects.all
+    awards = Award.objects.order_by('order')
+    skills = Skill.objects.order_by('order')
+    languages = Language.objects.order_by('order')
     return render(request, 'about/cv.html', 
     {
         'workexp': workexp,
@@ -33,9 +40,9 @@ def generate_pdf(request):
     # Model data
     workexp = WorkExperience.objects.order_by('-start_date')
     eduexp = Education.objects.order_by('-start_date')
-    awards = Award.objects.all
-    skills = Skill.objects.all
-    languages = Language.objects.all    
+    awards = Award.objects.order_by('order')
+    skills = Skill.objects.order_by('order')
+    languages = Language.objects.order_by('order')    
     # Rendered
     html_string = render_to_string('about/pdf.html', {
         'workexp': workexp,
@@ -50,7 +57,7 @@ def generate_pdf(request):
     # Creating http response
     response = HttpResponse(pdf, content_type='application/pdf;')
     #Download as attachment
-    response['Content-Disposition'] = 'attachment; filename=CV-{0}.pdf'.format("JHV-SoftwareDeveloper")
+    response['Content-Disposition'] = 'attachment; filename=CV-{0}.pdf'.format("DCorona-Researcher")
     # Display in browser
-    # response['Content-Disposition'] = 'inline; filename=CV-{0}.pdf'.format("JHV-SoftwareDeveloper")
+    # response['Content-Disposition'] = 'inline; filename=CV-{0}.pdf'.format("DCorona-Researcher")
     return response

@@ -24,7 +24,7 @@ body {
     color: rgba(255, 255, 255, 1);
 }
 
-.background {
+.jumbotron-bg {
     position: absolute;
     background-image: url(../img/tokamak.jpg);
     background-repeat: no-repeat;
@@ -32,8 +32,8 @@ body {
     background-position: center;
     filter: contrast(66%) brightness(60%) saturate(70%);
     width: 100%;
-    height: calc(100vh - 250px);
-    min-height: 400px;
+    /* height: calc(100vh - 250px); */
+    height: 100%;
     z-index: -1;
 }
 
