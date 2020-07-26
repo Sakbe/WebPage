@@ -72,9 +72,15 @@
                             </p>
                         </div>
                         {% for thesis in exp.thesis.all %}
+                        <div class="container-fluid p-0">
                             <div class="col-12">
-                                <h6 class="font-weight-bold">{{ thesis.header }}</h6>
+                                <h6 class="font-weight-bold">{{ thesis.header }}</h6>                                
                             </div>
+                            {% if thesis.place %}
+                            <div class="col-12">
+                                <span class="">{{ thesis.place }}</span>
+                            </div>
+                            {% endif %}
                             <div class="col-12">
                                 <p class=" p-0 font-weight-light">
                                     {{ thesis.title }}
@@ -82,11 +88,14 @@
                             </div>
                             {% if thesis.pubfile %}
                             <div class=" col-lg-4">
-                                <a  href="{{ thesis.pubfile.url }}"
+                                <p class="p-0">
+                                    <a  href="{{ thesis.pubfile.url }}"
                                     class="btn btn-sm {% if thesis.is_active %} btn-primary {% else %} btn-secondary disabled {% endif %}"
                                     target="_blank">{% if not thesis.is_active %} Coming soon! {% else %} Read more {% endif %}</a>
+                                </p>                                
                             </div>
                             {% endif %}
+                        </div>
                         {% endfor %}
                     </div>            
                 </div>            
@@ -121,9 +130,15 @@
                             </p>
                         </div>
                         {% for thesis in exp.thesis.all %}
+                        <div class="container-fluid p-0">
                             <div class="col-12">
-                                <h6 class="font-weight-bold">{{ thesis.header }}</h6>
+                                <h6 class="font-weight-bold">{{ thesis.header }}</h6>                                
                             </div>
+                            {% if thesis.place %}
+                            <div class="col-12">
+                                <span class="">{{ thesis.place }}</span>
+                            </div>
+                            {% endif %}
                             <div class="col-12">
                                 <p class=" p-0 font-weight-light">
                                     {{ thesis.title }}
@@ -131,11 +146,14 @@
                             </div>
                             {% if thesis.pubfile %}
                             <div class=" col-lg-4">
-                                <a  href="{{ thesis.pubfile.url }}"
+                                <p class="p-0">
+                                    <a  href="{{ thesis.pubfile.url }}"
                                     class="btn btn-sm {% if thesis.is_active %} btn-primary {% else %} btn-secondary disabled {% endif %}"
-                                    target="_blank">{% if not thesis.is_active %} Comming soon! {% else %} Read more {% endif %}</a>
+                                    target="_blank">{% if not thesis.is_active %} Coming soon! {% else %} Read more {% endif %}</a>
+                                </p>                                
                             </div>
                             {% endif %}
+                        </div>
                         {% endfor %}
                     </div>            
                 </div>            

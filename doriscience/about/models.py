@@ -46,7 +46,8 @@ class Education(Experience):
 class Thesis(models.Model):
     education = models.ForeignKey(Education, related_name='thesis', on_delete=models.CASCADE)
     header = models.CharField(max_length=80, default="Thesis")
-    title = models.CharField(max_length=450, default="Thesis Place </br> Thesis Title")
+    title = models.CharField(max_length=450, default="Thesis Title")
+    place = models.CharField(max_length=200, default="Thesis Place", blank=True)
     pubfile = models.FileField(upload_to='pdf', blank=True, null=True)
     url = models.CharField(max_length=300, blank=True, null=True)
     order = models.PositiveIntegerField(default=0, blank=False, null=False)
