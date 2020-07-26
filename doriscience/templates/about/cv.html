@@ -170,14 +170,16 @@
                         </div>
                         <div class="col-12">
                             <p class=" p-0 font-weight-light">
-                                {{ exp.body | safe | linebreaks }}
+                                {{ exp.body }}
                             </p>
                         </div>
+                        {% if exp.techs %}
                         <div class="col-12">
-                            <p class=" p-0 font-weight-light font-italic">
+                            <span class=" p-0 font-weight-light font-italic">
                                 {{ exp.techs }}
-                            </p>
+                            </span>
                         </div>
+                        {% endif %}
                     </div>            
                 </div>            
                 {% endfor %}

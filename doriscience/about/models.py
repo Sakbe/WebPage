@@ -25,7 +25,7 @@ class Experience(models.Model):
         ordering = ['-end_date']
 
 class WorkExperience(Experience):
-    techs = models.TextField()
+    techs = models.CharField(max_length=100, blank=True, null=True)
 
 class Education(Experience):
     EDUCATION_CHOICES = (
