@@ -28,6 +28,15 @@ class WorkExperience(Experience):
     techs = models.TextField()
 
 class Education(Experience):
+    EDUCATION_CHOICES = (
+        ('P', 'Postgraduate Training'),
+        ('S', 'Studies'),
+    )
+    category = models.CharField(max_length=1, choices=EDUCATION_CHOICES, default='P')
+    
+    class Meta(object):
+        ordering = ['category', '-end_date']
+    
     def start_date_pretty(self):
         return self.start_date.strftime('%Y')
 

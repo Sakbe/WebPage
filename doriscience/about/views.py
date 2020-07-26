@@ -22,14 +22,18 @@ def hobbies(request):
 
 def cv(request):
     workexp = WorkExperience.objects.order_by('-end_date')
-    eduexp = Education.objects.order_by('-end_date')
+    # eduexp = Education.objects.order_by('-end_date')
+    postgraduate = Education.objects.filter(category='P').order_by('-end_date')
+    studies = Education.objects.filter(category='S').order_by('-end_date')
     awards = Award.objects.order_by('order')
     skills = Skill.objects.order_by('order')
     languages = Language.objects.order_by('order')
     return render(request, 'about/cv.html', 
     {
         'workexp': workexp,
-        'eduexp': eduexp,
+        # 'eduexp': eduexp,
+        'postgraduate': postgraduate,
+        'studies': studies,
         'awards': awards,
         'skills': skills,
         'languages': languages,        

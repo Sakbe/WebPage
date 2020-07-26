@@ -41,8 +41,11 @@
             <div class="container  bg-light">
                 <div class="container text-primary px-4">
                     <h2 class="py-3">Education</h2>
+                </div>                
+                <div class="container px-4">
+                    <h3 class="font-weight-light">Postgraduate Training</h3>
                 </div>
-                {% for exp in eduexp.all %}
+                {% for exp in postgraduate.all %}
                 <div class="row justify-content-center py-4">
                     <div class="col-2 pr-0 d-none d-lg-block">
                         {{ exp.start_date_pretty }} - {{ exp.end_date_pretty }}
@@ -65,7 +68,56 @@
                         </div>
                         <div class="col-12">
                             <p class=" p-0 font-weight-light">
-                                {{ exp.body | safe | linebreaks }}                            
+                                {{ exp.body }}                            
+                            </p>
+                        </div>
+                        {% for thesis in exp.thesis.all %}
+                            <div class="col-12">
+                                <h6 class="font-weight-bold">{{ thesis.header }}</h6>
+                            </div>
+                            <div class="col-12">
+                                <p class=" p-0 font-weight-light">
+                                    {{ thesis.title }}
+                                </p>                                
+                            </div>
+                            {% if thesis.pubfile %}
+                            <div class=" col-lg-4">
+                                <a  href="{{ thesis.pubfile.url }}"
+                                    class="btn btn-sm {% if thesis.is_active %} btn-primary {% else %} btn-secondary disabled {% endif %}"
+                                    target="_blank">{% if not thesis.is_active %} Comming soon! {% else %} Read more {% endif %}</a>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>            
+                </div>            
+                {% endfor %}
+                <div class="container px-4">
+                    <h3 class="font-weight-light">Studies</h3>
+                </div>
+                {% for exp in studies.all %}
+                <div class="row justify-content-center py-4">
+                    <div class="col-2 pr-0 d-none d-lg-block">
+                        {{ exp.start_date_pretty }} - {{ exp.end_date_pretty }}
+                    </div>
+                    <div class="col-11 col-lg-9 text-justify text-lg-left">
+                        <div class="col-12">
+                            <h5 class="font-weight-bold">
+                                {{ exp.title }}
+                            </h5>
+                        </div>
+                        <div class="col-12">
+                            <span>
+                                {{ exp.place }}
+                            </span>
+                        </div>
+                        <div class="col-8 d-lg-none">
+                            <p>
+                                {{ exp.start_date_pretty }} - {{ exp.end_date_pretty }}
+                            </p>
+                        </div>
+                        <div class="col-12">
+                            <p class=" p-0 font-weight-light">
+                                {{ exp.body }}
                             </p>
                         </div>
                         {% for thesis in exp.thesis.all %}
