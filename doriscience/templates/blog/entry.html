@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main role="main">
+    <div class="container">
+        <div class="row justify-content-center py-4">
+            <div class="col-11 col-lg-9 col-xl-8">
+                <h1 class="pt-4">{{ entry.title }}</h1>
+                <p class="small text-muted">
+                    {{ entry.date }}
+                </p>
+                <p class="small text-muted">
+                    {{ entry.tags }}
+                </p>
+                <br />
+                <div class="text-center">
+                    <img class="img-fluid" src="{{ entry.cover_image.url }}"/>
+                </div>        
+                <br />
+                <p class="text-muted">
+                    {{ body.content | safe | linebreaks }}
+                </p>
+            </div>
+        </div>        
+    </div>
+</main>
+{% endblock %}
