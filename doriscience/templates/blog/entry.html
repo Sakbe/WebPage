@@ -12,8 +12,8 @@
                 <p class="small text-muted">
                     {{ entry.tags }}
                 </p>
-                <br />
                 {% if entry.gallery_embeds.all or entry.gallery_images.all %}
+                <br />                
                 <div id="gallery-carousel" class="carousel slide" data-interval="false">
                     <ol class="carousel-indicators">
                         <!-- Embed -->
@@ -81,8 +81,8 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
-                {% endif %}
                 <br />
+                {% endif %}
                 <hr />
                 <p class="text-muted">
                     {{ entry.body | safe | linebreaks }}
