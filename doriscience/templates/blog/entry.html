@@ -13,12 +13,82 @@
                     {{ entry.tags }}
                 </p>
                 <br />
-                {% if entry.cover_image %}
-                <div class="text-center">
-                    <img class="img-fluid" src="{{ entry.cover_image.url }}"/>
-                </div>        
-                {% endif %}
+        
+                <div id="gallery-carousel" class="carousel slide" data-interval="false">
+                    <ol class="carousel-indicators">
+                        <!-- Embed -->
+                        {% if entry.gallery_embeds.all %}
+                        {% for img in entry.gallery_embeds.all %}
+                            {% if forloop.first %}
+                            <li data-target="#gallery-carousel" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
+                            {% else %}
+                            <li data-target="#gallery-carousel" data-slide-to="{{ forloop.counter0 }}" class=""></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        <!-- Images -->
+                        {% for img in entry.images.all %}
+                            {% if forloop.first and not entry.gallery_embeds.all %}
+                            <li data-target="#gallery-carousel" data-slide-to="{{ forloop.counter0 }}" class="active"></li>                        
+                            {% else %}
+                            <li data-target="#gallery-carousel" data-slide-to="{{ forloop.counter0 }}" class=""></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ol>
+                    <div class="carousel-inner">
+                        <!-- Embed -->
+                        {% if entry.gallery_embeds.all %}
+                        {% for emb in entry.gallery_embeds.all %}
+                            {% if forloop.first %}
+                            <div class="carousel-item active">
+                            {% else %}
+                            <div class="carousel-item">
+                            {% endif %}
+                                <div class="bg-black">
+                                    <div class="gallery-img d-flex" alt="Slide">
+                                        <div class="iframe-container justify-content-center align-self-center">
+                                            {{ emb.body | safe }}                                 
+                                        </div>
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>{{ emb.title }}</h5>
+                                            <p>{{ emb.description }}</p>
+                                        </div>                                
+                                    </div>                                
+                                </div>
+                            </div>
+                        {% endfor %}
+                        {% endif %}
+                        <!-- Images -->
+                        {% for img in entry.images.all %}                            
+                            {% if img.in_gallery %}                            
+                            {% if forloop.first and not entry.gallery_embeds.all %}
+                            <div class="carousel-item active">
+                            {% else %}
+                            <div class="carousel-item">
+                            {% endif %}                                
+                                <div class="bg-black">
+                                    <div class="gallery-img d-block w-100" style="background-image: url('{{ img.image.url }}');" alt="Slide">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>{{ img.title }}</h5>
+                                            <p>{{ img.description }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#gallery-carousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#gallery-carousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
                 <br />
+                <hr />
                 <p class="text-muted">
                     {{ entry.body | safe | linebreaks }}
                 </p>
