@@ -15,6 +15,9 @@ class Entry(models.Model):
     def cover(self):
         return self.images.filter(is_cover=True).first()
 
+    def gallery_images(self):
+        return self.images.filter(in_gallery=True).all()
+
     def date_pretty(self):
         return self.date.strftime('%b %e, %Y')
 
