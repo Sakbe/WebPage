@@ -12,10 +12,10 @@ class Experience(models.Model):
     end_date = models.DateField(default=datetime.now)
 
     def start_date_pretty(self):
-        return self.start_date.strftime('%b/%y')
+        return self.start_date.strftime('%Y')
 
     def end_date_pretty(self):
-        return self.end_date.strftime('%b/%y')
+        return self.end_date.strftime('%Y')
 
     def __str__(self):
         return self.title + "@" + self.place
