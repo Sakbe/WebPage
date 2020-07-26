@@ -41,6 +41,7 @@ class Award(models.Model):
     date = models.DateField(default=datetime.now)
     url = models.CharField(max_length=200, null=True)
     order = models.PositiveIntegerField(default=0, blank=False, null=False)
+    is_active = models.BooleanField(default=True, blank=False, null=False)
     class Meta(object):
         ordering = ['order']
         
@@ -54,6 +55,7 @@ class Skill(models.Model):
     name = models.CharField(max_length=280)
     icon = models.CharField(max_length=50)
     order = models.PositiveIntegerField(default=0, blank=False, null=False)
+    is_active = models.BooleanField(default=True, blank=False, null=False)
     class Meta(object):
         ordering = ['order']
     def __str__(self):
@@ -72,6 +74,7 @@ class Hobby(models.Model):
     name = models.CharField(max_length=140)
     image = models.ImageField(upload_to='images/hobbies/')
     order = models.PositiveIntegerField(default=0, blank=False, null=False)
+    is_active = models.BooleanField(default=True, blank=False, null=False)
     class Meta(object):
         ordering = ['order']
     def __str__(self):

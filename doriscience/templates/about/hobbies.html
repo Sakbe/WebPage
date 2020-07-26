@@ -15,6 +15,7 @@
             <div class="container">                
                 <div class="row justify-content-center py-5">
                     {% for hobby in hobbies %}
+                    {% if hobby.is_active %}
                     <div class="col-lg-3 p-4 text-center">
                         <img
                             src="{{ hobby.image.url }}"
@@ -24,6 +25,7 @@
                             alt=""
                         />
                     </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>            
