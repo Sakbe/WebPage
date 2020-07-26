@@ -1,11 +1,19 @@
 from django.contrib import admin
-from adminsortable2.admin import SortableAdminMixin
+from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
 
 # Register your models here.
-from .models import WorkExperience, Education, Award, Language, Skill, Hobby
+from .models import WorkExperience, Education, Thesis, Award, Language, Skill, Hobby
 
 admin.site.register(WorkExperience)
-admin.site.register(Education)
+
+class ThesisInline(SortableInlineAdminMixin, admin.StackedInline):
+    model = Thesis
+    extra = 1
+
+@admin.register(Education)
+class EducationAdmin(admin.ModelAdmin):
+    inlines = [ ThesisInline ]
+    ordering = ['-end_date']
 
 @admin.register(Award)
 class AwardAdmin(SortableAdminMixin, admin.ModelAdmin):

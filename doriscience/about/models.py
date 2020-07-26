@@ -22,18 +22,30 @@ class Experience(models.Model):
 
     class Meta:
         abstract = True
+        ordering = ['-end_date']
 
 class WorkExperience(Experience):
     techs = models.TextField()
 
 class Education(Experience):
-    thesis = models.TextField()
-
     def start_date_pretty(self):
         return self.start_date.strftime('%Y')
 
     def end_date_pretty(self):
         return self.end_date.strftime('%Y')
+
+class Thesis(models.Model):
+    education = models.ForeignKey(Education, related_name='thesis', on_delete=models.CASCADE)
+    header = models.CharField(max_length=80, default="Thesis")
+    title = models.CharField(max_length=450, default="Thesis Place </br> Thesis Title")
+    pubfile = models.FileField(upload_to='pdf', blank=True, null=True)
+    url = models.CharField(max_length=300, blank=True, null=True)
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
+    is_active = models.BooleanField(default=True, blank=False, null=False)
+    class Meta(object):
+        ordering = ['order']
+    def __str__(self):
+        return self.title
 
 class Award(models.Model):
     title = models.CharField(max_length=100, default="Award Title")

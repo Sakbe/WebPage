@@ -21,8 +21,8 @@ def hobbies(request):
     })
 
 def cv(request):
-    workexp = WorkExperience.objects.order_by('-start_date')
-    eduexp = Education.objects.order_by('-start_date')
+    workexp = WorkExperience.objects.order_by('-end_date')
+    eduexp = Education.objects.order_by('-end_date')
     awards = Award.objects.order_by('order')
     skills = Skill.objects.order_by('order')
     languages = Language.objects.order_by('order')
@@ -38,8 +38,8 @@ def cv(request):
 def generate_pdf(request):
     """Generate pdf."""
     # Model data
-    workexp = WorkExperience.objects.order_by('-start_date')
-    eduexp = Education.objects.order_by('-start_date')
+    workexp = WorkExperience.objects.order_by('-end_date')
+    eduexp = Education.objects.order_by('-end_date')
     awards = Award.objects.order_by('order')
     skills = Skill.objects.order_by('order')
     languages = Language.objects.order_by('order')    
