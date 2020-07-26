@@ -13,12 +13,14 @@
                     {{ entry.tags }}
                 </p>
                 <br />
+                {% if entry.cover_image %}
                 <div class="text-center">
                     <img class="img-fluid" src="{{ entry.cover_image.url }}"/>
                 </div>        
+                {% endif %}
                 <br />
                 <p class="text-muted">
-                    {{ body.content | safe | linebreaks }}
+                    {{ entry.body | safe | linebreaks }}
                 </p>
             </div>
         </div>        

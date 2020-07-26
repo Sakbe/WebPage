@@ -5,7 +5,7 @@ from datetime import datetime
 class Entry(models.Model):
     is_active = models.BooleanField(default=True, blank=False, null=False)
     title = models.CharField(max_length=140)
-    cover_image = models.ImageField(upload_to='blog/images')
+    cover_image = models.ImageField(upload_to='blog/images', null=True, blank=True)
     date = models.DateTimeField(default=datetime.now)
     tags = models.CharField(max_length=200)
     body = models.TextField()    
