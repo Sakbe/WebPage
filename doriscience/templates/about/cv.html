@@ -215,7 +215,7 @@
                         {% for language in languages.all %}
                         <div class="row align-items-center">
                             <div class="col-5 pr-0">
-                                <a class="fa fa-icon fa-globe p-1"></a>
+                                <a class="fas fa-icon fa-globe"></a>
                                 <span class="align-text-bottom pl-lg-4">{{ language.name }}</span>
                             </div>
                             <div class="col-7">
@@ -239,7 +239,7 @@
                         {% for skill in skills.all %}
                         <div class="col-12 col-lg-8">
                             <a
-                                class="fa fa-list {{ skill.icon }} col-1 text-center"
+                                class="fa-icon {{ skill.icon }} col-1 text-center"
                             ></a>
                             <span class="h6 col-11">{{ skill.name }}</span>
                         </div>
