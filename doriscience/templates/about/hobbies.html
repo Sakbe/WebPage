@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block content %}
+<main role="main">
+    <section>
+        <div class="section-container container-fluid bg-dark text-center text-light cursive">
+            <!-- HEADER LINE -->
+            <div class="">
+                <div class="line col-12 cursive">-</div>
+            </div>
+            <h1 class="text-center text-light pt-5">
+                Hobbies
+            </h1>
+            <div class="container">                
+                <div class="row justify-content-center py-5">
+                    {% for hobby in hobbies %}
+                    {% if hobby.is_active %}
+                    <div class="col-lg-3 p-4 text-center">
+                        <img
+                            src="{{ hobby.image.url }}"
+                            width="100"
+                            height="100"
+                            class="img-fluid d-inline-block align-top"
+                            alt=""
+                        />
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>            
+        </div>
+    </section>
+</main>
+
+{% endblock %}

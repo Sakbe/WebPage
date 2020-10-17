@@ -1,0 +1,321 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main>
+    <section class="panel bg-light">
+        <div class="p-4 align-items-start align-items-lg-center">
+            <div class="my-3">
+                <div class="text-center">
+                    <!-- HEADER LINE -->
+                    <div class="col-12 d-flex">
+                        <div class="color-accent col-2 col-lg-1"></div>
+                    </div>
+                    <h1 class="col-lg-12 pt-4 pt-lg-5">
+                        Doménica Corona
+                    </h1>
+                    <h4 class="col-lg-12 py-4">
+                        PhD Researcher
+                    </h4>
+                    <p class="col-lg-12">
+                        <a
+                            class="btn btn-outline-primary font-weight-bold"
+                            href="https://www.linkedin.com/in/dcoronar/"
+                            role="button"
+                            target="_blank"
+                            >Contact me</a
+                        >                        
+                    </p>
+                    <!-- <p class="col-lg-12">
+                        <a
+                            class="btn btn-sm btn-primary font-weight-bold"
+                            href="{% url 'about_pdf' %}"
+                            role="button"
+                            target="_blank"
+                            >Download PDF</a
+                        >
+                    </p> -->
+                </div>
+            </div>
+        </div>
+        <section>
+            <div class="container  bg-light">
+                <div class="container text-primary px-4">
+                    <h2 class="py-3">Education</h2>
+                </div>                
+                <div class="container px-4">
+                    <h3 class="font-weight-light">Postgraduate Training</h3>
+                </div>
+                {% for exp in postgraduate.all %}
+                <div class="row justify-content-center py-4">
+                    <div class="col-2 pr-0 d-none d-lg-block">
+                        {{ exp.start_date_pretty }} - {{ exp.end_date_pretty }}
+                    </div>
+                    <div class="col-11 col-lg-9 text-justify text-lg-left">
+                        <div class="col-12">
+                            <h5 class="font-weight-bold">
+                                {{ exp.title }}
+                            </h5>
+                        </div>
+                        <div class="col-12">
+                            <span>
+                                {{ exp.place }}
+                            </span>
+                        </div>
+                        <div class="col-8 d-lg-none">
+                            <p>
+                                {{ exp.start_date_pretty }} - {{ exp.end_date_pretty }}
+                            </p>
+                        </div>
+                        <div class="col-12">
+                            <p class=" p-0 font-weight-light">
+                                {{ exp.body }}                            
+                            </p>
+                        </div>
+                        {% for thesis in exp.thesis.all %}
+                        <div class="container-fluid p-0">
+                            <div class="col-12">
+                                <h6 class="font-weight-bold">{{ thesis.header }}</h6>                                
+                            </div>
+                            {% if thesis.place %}
+                            <div class="col-12">
+                                <span class="">{{ thesis.place }}</span>
+                            </div>
+                            {% endif %}
+                            <div class="col-12">
+                                <p class=" p-0 font-weight-light">
+                                    {{ thesis.title }}
+                                </p>                                
+                            </div>
+                            {% if thesis.pubfile %}
+                            <div class=" col-lg-4">
+                                <p class="p-0">
+                                    <a  href="{{ thesis.pubfile.url }}"
+                                    class="btn btn-sm {% if thesis.is_active %} btn-primary {% else %} btn-secondary disabled {% endif %}"
+                                    target="_blank">{% if not thesis.is_active %} Coming soon! {% else %} Read more {% endif %}</a>
+                                </p>                                
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>            
+                </div>            
+                {% endfor %}
+                <div class="container px-4">
+                    <h3 class="font-weight-light">Studies</h3>
+                </div>
+                {% for exp in studies.all %}
+                <div class="row justify-content-center py-4">
+                    <div class="col-2 pr-0 d-none d-lg-block">
+                        {{ exp.start_date_pretty }} - {{ exp.end_date_pretty }}
+                    </div>
+                    <div class="col-11 col-lg-9 text-justify text-lg-left">
+                        <div class="col-12">
+                            <h5 class="font-weight-bold">
+                                {{ exp.title }}
+                            </h5>
+                        </div>
+                        <div class="col-12">
+                            <span>
+                                {{ exp.place }}
+                            </span>
+                        </div>
+                        <div class="col-8 d-lg-none">
+                            <p>
+                                {{ exp.start_date_pretty }} - {{ exp.end_date_pretty }}
+                            </p>
+                        </div>
+                        <div class="col-12">
+                            <p class=" p-0 font-weight-light">
+                                {{ exp.body }}
+                            </p>
+                        </div>
+                        {% for thesis in exp.thesis.all %}
+                        <div class="container-fluid p-0">
+                            <div class="col-12">
+                                <h6 class="font-weight-bold">{{ thesis.header }}</h6>                                
+                            </div>
+                            {% if thesis.place %}
+                            <div class="col-12">
+                                <span class="">{{ thesis.place }}</span>
+                            </div>
+                            {% endif %}
+                            <div class="col-12">
+                                <p class=" p-0 font-weight-light">
+                                    {{ thesis.title }}
+                                </p>                                
+                            </div>
+                            {% if thesis.pubfile %}
+                            <div class=" col-lg-4">
+                                <p class="p-0">
+                                    <a  href="{{ thesis.pubfile.url }}"
+                                    class="btn btn-sm {% if thesis.is_active %} btn-primary {% else %} btn-secondary disabled {% endif %}"
+                                    target="_blank">{% if not thesis.is_active %} Coming soon! {% else %} Read more {% endif %}</a>
+                                </p>                                
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>            
+                </div>            
+                {% endfor %}
+            </div>
+        </section>
+        <section>
+            <div class="container  bg-light">
+                <div class="container text-primary px-4">
+                    <h2 class="py-2">Working Experience</h2>
+                </div>
+                {% for exp in workexp.all %}
+                <div class="row justify-content-center py-4">
+                    <div class="col-2 pr-0 d-none d-lg-block">
+                        {{ exp.start_date_pretty }} - {{ exp.end_date_pretty }}
+                    </div>
+                    <div class="col-11 col-lg-9 text-justify text-lg-left">
+                        <div class="col-12">
+                            <h5 class="font-weight-bold">
+                                {{ exp.title }}
+                            </h5>
+                        </div>
+                        <div class="col-12">
+                            <span>
+                                {{ exp.place }}
+                            </span>
+                        </div>
+                        <div class="col-8 d-lg-none">
+                            <p>
+                                {{ exp.start_date_pretty }} - {{ exp.end_date_pretty }}
+                            </p>
+                        </div>
+                        <div class="col-12">
+                            <p class=" p-0 font-weight-light">
+                                {{ exp.body }}
+                            </p>
+                        </div>
+                        {% if exp.techs %}
+                        <div class="col-12">
+                            <span class=" p-0 font-weight-light font-italic">
+                                {{ exp.techs }}
+                            </span>
+                        </div>
+                        {% endif %}
+                    </div>            
+                </div>            
+                {% endfor %}
+            </div>
+        </section>
+        <section>
+            <div class="container  bg-light">
+                <div class="container text-primary px-4">
+                    <h2 class="py-3">Languages</h2>
+                </div>
+                <div class="row justify-content-center py-3">
+                    <div class="col-2 pr-0 d-none d-lg-block">
+                    </div>
+                    <div class="col-11 col-lg-9 text-justify text-lg-left">
+                        {% for language in languages.all %}
+                        <div class="row align-items-center">
+                            <div class="col-5 pr-0">
+                                <a class="fas fa-icon fa-globe"></a>
+                                <span class="align-text-bottom pl-lg-4">{{ language.name }}</span>
+                            </div>
+                            <div class="col-7">
+                                <span class="align-text-bottom">{{ language.proficiency }}</span>                            
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container bg-light">
+                <div class="container text-primary px-4">
+                    <h2 class="py-3">Skills</h2>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-2 pr-0 d-none d-lg-block">                    
+                    </div>
+                    <div class="col-12 col-lg-9 text-justify text-lg-left">
+                        {% for skill in skills.all %}
+                        <div class="col-12 col-lg-8">
+                            <a
+                                class="fa-icon {{ skill.icon }} col-1 text-center"
+                            ></a>
+                            <span class="h6 col-11">{{ skill.name }}</span>
+                        </div>
+                        {% endfor %}                    
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container  bg-light">
+                <div class="container text-primary px-4">
+                    <h2 class="py-3">Awards</h2>
+                </div>
+                {% for award in awards.all %}
+                {% if award.is_active %}
+                <div class="row justify-content-center py-2">
+                    <div class="col-2 pr-0 d-none d-lg-block">
+                        <p>
+                            {{ award.date_pretty }}                            
+                        </p>
+                    </div>
+                    <div class="col-11 col-lg-9 text-justify text-lg-left">
+                        <div class="col-12">
+                            <h5 class="font-weight-bold">
+                                {{ award.title }}
+                            </h5>
+                        </div>
+                        <div class="col-12">
+                            <span>
+                                {{ award.organization }}
+                            </span>
+                        </div>
+                        <div class="col-8 d-lg-none py-2">                       
+                            <span>
+                                {{ award.date_pretty }}                                
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+        <section>
+            <div class="container  bg-light">
+                <div class="container text-primary px-4">
+                    <h2 class="pt-4">Publications</h2>
+                </div>
+                <div class="row justify-content-center py-2">
+                    <div class="col-2 pr-0 d-none d-lg-block">
+                        <!-- 2014 – 2016 -->
+                    </div>
+                    <div class="col-11 col-lg-9 text-justify text-lg-left">
+                        <div class="row align-items-center">
+                            <div class=" col-12 p-4">
+                                <a
+                                    href="{% url 'published' %}"
+                                    class="btn btn-sm btn-primary"
+                                    >Go to publications</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- SPACE -->
+        <div class="container-fluid p-3 bg-light">
+            <div class="row align-items-center justify-content-between">
+                <div
+                    class="col-lg-6 container py-2 text-center text-lg-left"
+                >
+                    <div class="col-12 m-0"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Jaime - AR/VR Developer portfolio." />
+    <meta name="author" content="Jaime Hernández" />
+    <title>Jaime Hernández | Developer</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <!-- Custom style -->
+    <link rel="stylesheet" href="{% static 'css/pdf.css' %}" />
+</head>
+<body>
+
+    <main>
+        <section class="panel bg-white">
+            <!-- <div class="background"></div> -->
+            <div class="p-4 align-items-start align-items-lg-center">
+                <div class="my-3">
+                    <div class="text-center">
+                       <h4 class="font-weight-bold col-12 pt-0">
+                            Doménica Corona Rivera
+                        </h4>
+                        <h5 class="col-12 py-2">
+                            PhD Researcher
+                        </h5>                    
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="container text-primary px-2">
+                    <h5 class="py-2">Working Experience</h5>
+                </div>
+                {% for exp in workexp.all %}
+                <div class="row justify-content-center py-2">
+                    <!-- <div class="col-1 pr-0">
+                        {{ exp.start_date_pretty }} - {{ exp.end_date_pretty }}
+                    </div> -->
+                    <div class="col-12 text-left">
+                        <div class="col-12">
+                            <h5 class="font-weight-bold">
+                                {{ exp.title }}
+                            </h5>
+                        </div>
+                        <div class="col-12">
+                            <span>
+                                {{ exp.place }}
+                            </span>
+                        </div>
+                        <div class="col-8 d-lg-none">
+                            <p>
+                                {{ exp.start_date_pretty }} - {{ exp.end_date_pretty }}
+                            </p>
+                        </div>
+                        <div class="col-12">
+                            <p class=" p-0 font-weight-light">
+                                {{ exp.body | safe | linebreaks }}
+                            </p>
+                        </div>
+                        <div class="col-12">
+                            <p class="p-1 pb-2 font-weight-light font-italic">
+                                {{ exp.techs }}
+                            </p>
+                        </div>
+                    </div>            
+                </div>            
+                {% endfor %}
+            </div>
+            <div class="container">
+                <div class="container text-primary px-2">
+                    <h5 class="py-2">Education</h5>
+                </div>
+                {% for exp in eduexp.all %}
+                <div class="row justify-content-center py-2">
+                    <!-- <div class="col-1 pr-0">
+                        {{ exp.start_date_pretty }} - {{ exp.end_date_pretty }}
+                    </div> -->
+                    <div class="col-12 text-left">
+                        <div class="col-12">
+                            <h5 class="font-weight-bold">
+                                {{ exp.title }}
+                            </h5>
+                        </div>
+                        <div class="col-12">
+                            <span>
+                                {{ exp.place }}
+                            </span>
+                        </div>
+                        <div class="col-8 d-lg-none">
+                            <p>
+                                {{ exp.start_date_pretty }} - {{ exp.end_date_pretty }}
+                            </p>
+                        </div>
+                        <div class="col-12">
+                            <p class=" p-0 font-weight-light">
+                                {{ exp.body | safe | linebreaks }}                            
+                            </p>
+                        </div>
+                        <div class="col-12">
+                            <p class=" p-0 font-weight-light font-italic">
+                                {{ exp.thesis | safe | linebreaks }}                            
+                            </p>
+                        </div>
+                    </div>            
+                </div>            
+                {% endfor %}
+            </div>
+            <div class="container">
+                <div class="container text-primary px-2">
+                    <h5 class="py-2">Awards</h5>
+                </div>
+                {% for award in awards.all %}
+                <div class="row justify-content-center py-2">
+                    <div class="col-1 pr-0">
+                        <!-- <p>
+                            From {{ award.start_date_pretty }}</br>
+                            to {{ award.end_date_pretty }}
+                        </p> -->
+                    </div>
+                    <div class="col-12 text-left">
+                        <div class="col-12">
+                            <h5 class="font-weight-bold">
+                                {{ award.title }}
+                            </h5>
+                        </div>
+                        <div class="col-12">
+                            <span>
+                                {{ award.organization }}
+                            </span>
+                        </div>
+                        <div class="col-8 d-lg-none py-2">                       
+                            <span>
+                                From {{ award.date_pretty }}                                
+                            </span>
+                        </div>
+                        <div class="col-12">
+                            <p class="pt-lg-2">
+                                <a
+                                class="small"
+                                href="{{ award.url }}"
+                                role="button"
+                                target="_blank">
+                                {{ award.url }}</a>
+                            </p>                        
+                        </div>                    
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            </br>
+            <div class="container">
+                <div class="container text-primary px-2">
+                    <h5 class="py-2">Skills</h5>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-1 pr-0">                    
+                    </div>
+                    <div class="col-12 text-left">
+                        {% for skill in skills.all %}
+                        <div class="col-12 col-lg-8">                            
+                            <span class="">· {{ skill.name }}</span>
+                        </div>
+                        {% endfor %}                    
+                    </div>
+                </div>
+            </div>
+            </br>
+            <div class="container">
+                <div class="container text-primary px-2">
+                    <h5 class="py-3">Languages</h5>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-1 pr-0">
+                    </div>
+                    <div class="col-12 text-left">
+                        {% for language in languages.all %}
+                        <div class="row align-items-center">
+                            <div class="col-5 pr-0">
+                                <span class="align-text-bottom pl-lg-4">· {{ language.name }}</span>
+                            </div>
+                            <div class="col-7">
+                                <span class="align-text-bottom">{{ language.proficiency }}</span>                            
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>            
+        </section>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
