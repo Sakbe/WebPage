@@ -14,27 +14,28 @@
                         <h1 class="col-lg-12 text-primary py-4 pt-lg-5">
                             Publications
                         </h1>
-                        {% if quote.is_active %}
-                        <blockquote class="blockquote text-center">
-                            <p class="mb-0">
-                                {{ quote.text }}
-                            </p>
-                            <footer class="blockquote-footer">
-                                {{ quote.author }}                                
-                            </footer>
-                        </blockquote>
-                        {% endif %}
-                        <!-- <h4 class="col-lg-12 py-4">
-                            PhD Researcher
-                        </h4> -->
-                        <!-- <p class="col-lg-12">
-                            <a
-                                class="btn btn-primary font-weight-bold"
-                                href="https://www.linkedin.com/in/dcoronar/"
-                                role="button"
-                                >Contact me</a
-                            >
-                        </p> -->
+                        <div id="carouselQuotes" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                {% for quote in quotes %}
+                                    {% if quote.is_active %}
+                                    {% if forloop.first %}
+                                    <div class="carousel-item active">
+                                    {% else  %}
+                                    <div class="carousel-item">
+                                    {% endif %}
+                                        <blockquote class="blockquote text-center">
+                                            <p class="mb-0">
+                                                {{ quote.text }}
+                                            </p>
+                                            <footer class="blockquote-footer">
+                                                {{ quote.author }}                                
+                                            </footer>
+                                        </blockquote>                                    
+                                    </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>                        
                     </div>
                 </div>
             </div>
@@ -48,9 +49,6 @@
                         {{ pub.date_pretty }}
                     </div>
                     <div class="col-11 col-lg-9 text-justify text-lg-left">
-                        <!-- <div class="col-12">
-                            <h5 class="font-weight-bold">PhD</h5>
-                        </div> -->
                         <div class="col-12">
                             <p>
                                 <b>{{ pub.title }},</b>

@@ -9,9 +9,9 @@ from .models import Publication, Quote
 # Create your views here.
 def all(request):
     pubs = Publication.objects.order_by('order')
-    quote = Quote.objects.first
+    quotes = Quote.objects.order_by('order')
     return render(request, 'publications/list.html', 
     {
         'pubs': pubs,
-        'quote': quote,
+        'quotes': quotes,
     })
