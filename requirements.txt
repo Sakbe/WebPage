@@ -4,7 +4,7 @@ CairoSVG==2.5.1
 cffi==1.14.0
 cssselect2==0.3.0
 defusedxml==0.6.0
-Django==3.1.13
+Django==3.1.14
 django-admin-sortable2==1.0
 django-unused-media==0.2.0
 html5lib==1.1
