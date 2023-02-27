@@ -40,6 +40,49 @@
         <section>
             <div class="container  bg-light">
                 <div class="container text-primary px-4">
+                    <h2 class="py-2">Working Experience</h2>
+                </div>
+                {% for exp in workexp.all %}
+                <div class="row justify-content-center py-4">
+                    <div class="col-2 pr-0 d-none d-lg-block">
+                        {{ exp.start_date_pretty }} - {% if exp.is_current %}Current{% else %}{{ exp.end_date_pretty }}{% endif %}
+                    </div>
+                    <div class="col-11 col-lg-9 text-justify text-lg-left">
+                        <div class="col-12">
+                            <h5 class="font-weight-bold">
+                                {{ exp.title }}
+                            </h5>
+                        </div>
+                        <div class="col-12">
+                            <span>
+                                {{ exp.place }}
+                            </span>
+                        </div>
+                        <div class="col-8 d-lg-none">
+                            <p>
+                                {{ exp.start_date_pretty }} - {% if exp.is_current %}Current{% else %}{{ exp.end_date_pretty }}{% endif %}
+                            </p>
+                        </div>
+                        <div class="col-12">
+                            <p class=" p-0 font-weight-light">
+                                {{ exp.body }}
+                            </p>
+                        </div>
+                        {% if exp.techs %}
+                        <div class="col-12">
+                            <span class=" p-0 font-weight-light font-italic">
+                                {{ exp.techs }}
+                            </span>
+                        </div>
+                        {% endif %}
+                    </div>            
+                </div>            
+                {% endfor %}
+            </div>
+        </section>
+        <section>
+            <div class="container  bg-light">
+                <div class="container text-primary px-4">
                     <h2 class="py-3">Education</h2>
                 </div>                
                 <div class="container px-4">
@@ -155,49 +198,6 @@
                             {% endif %}
                         </div>
                         {% endfor %}
-                    </div>            
-                </div>            
-                {% endfor %}
-            </div>
-        </section>
-        <section>
-            <div class="container  bg-light">
-                <div class="container text-primary px-4">
-                    <h2 class="py-2">Working Experience</h2>
-                </div>
-                {% for exp in workexp.all %}
-                <div class="row justify-content-center py-4">
-                    <div class="col-2 pr-0 d-none d-lg-block">
-                        {{ exp.start_date_pretty }} - {% if exp.is_current %}Current{% else %}{{ exp.end_date_pretty }}{% endif %}
-                    </div>
-                    <div class="col-11 col-lg-9 text-justify text-lg-left">
-                        <div class="col-12">
-                            <h5 class="font-weight-bold">
-                                {{ exp.title }}
-                            </h5>
-                        </div>
-                        <div class="col-12">
-                            <span>
-                                {{ exp.place }}
-                            </span>
-                        </div>
-                        <div class="col-8 d-lg-none">
-                            <p>
-                                {{ exp.start_date_pretty }} - {% if exp.is_current %}Current{% else %}{{ exp.end_date_pretty }}{% endif %}
-                            </p>
-                        </div>
-                        <div class="col-12">
-                            <p class=" p-0 font-weight-light">
-                                {{ exp.body }}
-                            </p>
-                        </div>
-                        {% if exp.techs %}
-                        <div class="col-12">
-                            <span class=" p-0 font-weight-light font-italic">
-                                {{ exp.techs }}
-                            </span>
-                        </div>
-                        {% endif %}
                     </div>            
                 </div>            
                 {% endfor %}

@@ -170,6 +170,7 @@ body {
 .gallery-img .carousel-caption {
     bottom: -20px !important;
     opacity: 0.25;
+    -webkit-text-stroke: 1px black;
     transition: opacity .2s ease;
 }
 .gallery-img:hover .carousel-caption {
